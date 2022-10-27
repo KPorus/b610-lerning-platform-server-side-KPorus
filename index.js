@@ -27,6 +27,15 @@ app.get("/allCourses/:category_id",(req,res)=>
     res.send(selectedCourse);
 })
 
+app.get("/course-detail/:id",(req,res)=>
+{
+    let id1 = req.params.id;
+    console.log(req.params.id)
+    let selectedCourse = course.find(n => n.id == id1);
+    console.log(selectedCourse)
+    res.send(selectedCourse);
+})
+
 app.listen(Port,() =>{
     console.log("Post runing on server",Port);
 })
