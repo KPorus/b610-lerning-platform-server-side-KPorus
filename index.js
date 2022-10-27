@@ -8,6 +8,12 @@ const Port = process.env.Port || 5000;
 const homeProduct = require("./Data/Home.json");
 const course = require("./Data/Courses.json");
 
+app.use((req, res, next)=>
+{
+    console.log(req.path,"Fardin every time")
+    next();
+})
+
 app.get("/",(req ,res)=>
 {
     res.send(homeProduct);
@@ -21,18 +27,14 @@ app.get("/allCourses", (req,res)=>
 app.get("/allCourses/:category_id",(req,res)=>
 {
     let id = req.params.category_id;
-    console.log(req.params.category_id)
     let selectedCourse = course.filter(n => n.catagory_id == id);
-    console.log(selectedCourse)
     res.send(selectedCourse);
 })
 
 app.get("/course-detail/:id",(req,res)=>
 {
     let id1 = req.params.id;
-    console.log(req.params.id)
     let selectedCourse = course.find(n => n.id == id1);
-    console.log(selectedCourse)
     res.send(selectedCourse);
 })
 
