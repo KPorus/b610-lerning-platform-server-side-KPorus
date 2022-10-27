@@ -13,6 +13,10 @@ app.get("/",(req ,res)=>
     res.send(homeProduct);
 })
 
+app.get("/allCourses", (req,res)=>
+{
+    res.send(course);
+})
 
 app.listen(Port,() =>{
     console.log("Post runing on server",Port);
